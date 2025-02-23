@@ -1,5 +1,4 @@
 "use client";
-
 import { Footer } from "@/components/footer";
 import { NavigationBar } from "@/components/navbar";
 import React from "react";

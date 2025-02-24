@@ -1,8 +1,10 @@
+"use client";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
 import { NavigationBar } from "@/components/navbar";
-import { Footer } from "flowbite-react";
+import { Footer } from "@/components/footer";
+import React from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,17 +27,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="min-h-screen flex flex-col">
-          <NavigationBar />
-          <main className="flex-grow pt-16">{children}</main>
+          <NavigationBar
+            mobileMenuOpen={mobileMenuOpen}
+            setMobileMenuOpen={setMobileMenuOpen}
+          />
+          <main className="flex-1 pt-16">{children}</main>
           <Footer />
         </div>
-        <script src="../node_modules/flowbite/dist/flowbite.min.js" async />
       </body>
     </html>
   );

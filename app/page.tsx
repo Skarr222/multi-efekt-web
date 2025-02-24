@@ -1,13 +1,10 @@
 "use client";
-import { Footer } from "@/components/footer";
-import { NavigationBar } from "@/components/navbar";
 import React from "react";
 
 export default function Home() {
   return (
     <div className="bg-white">
       <div className="relative isolate px-6 pt-14 lg:px-8">
-        <NavigationBar />
         <div
           aria-hidden="true"
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -55,7 +52,6 @@ export default function Home() {
           />
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

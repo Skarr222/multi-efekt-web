@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  nextjs-app:
+    build:
+      context: . # Kontekst budowania to bieżący katalog (gdzie znajduje się Dockerfile)
+      dockerfile: Dockerfile # Nazwa pliku Dockerfile
+    ports:
+      - "3000:3000" # Mapowanie portów: HOST:CONTAINER
+    environment:
+      # Zmienne środowiskowe dla aplikacji Next.js
+      # Upewnij się, że są zgodne z tymi, których używa Twoja aplikacja
+      DATABASE_URL: postgres://user:password@db:5432/mydatabase # Połączenie z bazą danych
+      NEXT_PUBLIC_API_URL: http://localhost:3000/api # Przykład dla API lokalnego
+    depends_on:
+      - db # Oznacza, że nextjs-app zależy od usługi 'db' (bazy danych)
+    volumes:
+      - .:/app # Opcjonalne: mapowanie katalogu projektu dla trybu deweloperskiego (hot-reloading)
+      - /app/node_modules # Wykluczenie node_modules z mapowania (dla szybszego hot-reloading)
+
+  # Usługa dla bazy danych PostgreSQL
+  db:
+    image: postgres:15-alpine # Używamy oficjalnego obrazu PostgreSQL
+    restart: always # Automatyczne ponowne uruchamianie kontenera w przypadku awarii
+    environment:
+      # Zmienne środowiskowe dla PostgreSQL
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432" # Opcjonalnie: wystawienie portu bazy danych na hosta
+    volumes:
+      - db_data:/var/lib/postgresql/data # Trwałe przechowywanie danych bazy danych
+
+# Wolumeny do przechowywania trwałych danych
+volumes:
+  db_data: # Dane bazy danych będą przechowywane w wolumenie o nazwie 'db_data'

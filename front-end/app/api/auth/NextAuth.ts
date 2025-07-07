@@ -4,7 +4,7 @@ import GoogleProvider from "next-auth/providers/google";
 export default NextAuth({
   callbacks: {
     session({ session, token, user }) {
-      return session; // The return type will match the one returned in `useSession()`
+      return session;
     },
   },
   providers: [

@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 :root {
-  --color-bg: #ffffff;
+  --color-bg: #eeeeee;
   --color-text: #111827;
   --color-primary: #2563eb;
   --color-secondary: #64748b;

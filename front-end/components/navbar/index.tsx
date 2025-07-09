@@ -12,9 +12,9 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 export const navigation = [
-  { name: "Projekty", href: "#" },
+  { name: "Projekty", href: "/p/projects" },
   { name: "O nas", href: "/p/about" },
-  { name: "Kontakt", href: "/contact" },
+  { name: "Kontakt", href: "/p/contact" },
 ];
 export const NavigationBar = () => {
   return (
@@ -36,7 +36,7 @@ export const NavigationBar = () => {
       </NavbarBrand>
       <div className="flex items-center md:order-2 space-x-2">
         <DarkThemeToggle />
-        <Button as={Link} href="/login">
+        <Button as={Link} href="/auth/login">
           Zaloguj się
         </Button>
         <NavbarToggle />

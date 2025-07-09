@@ -9,15 +9,19 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+.vscode
 # testing
 /coverage
+.flowbite-react
 
 # next.js
+.next/
+.cache
 /out/
 
 # production
 /build
-
+.flowbite-react
 # misc
 .DS_Store
 *.pem

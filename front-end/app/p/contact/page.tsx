@@ -1,9 +1,9 @@
 import React from "react";
 
-export const Contact = () => {
+export default function Contact() {
   return (
     <React.Fragment>
       <div>KONTAKT</div>
     </React.Fragment>
   );
-};
+}

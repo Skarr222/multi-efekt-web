@@ -4,8 +4,7 @@ import { Footer } from "@/components/footer";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeModeScript } from "flowbite-react";
 import React from "react";
-import { SessionProvider } from "next-auth/react";
-import { Session } from "next-auth";
+import SessionWrapper from "@/wrappers/SessionWraper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,12 +24,7 @@ export const metadata = {
 
 export default function RootLayout({
   children,
-  pageProps: { session, ...pageProps },
 }: {
-  pageProps: {
-    session: Session;
-    [key: string]: any; // Allow other properties in pageProps
-  };
   children: React.ReactNode;
 }) {
   return (
@@ -41,11 +35,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
-        <SessionProvider>
+        <SessionWrapper>
           <NavigationBar />
           <main className="flex-1 pt-16">{children}</main>
           <Footer />
-        </SessionProvider>
+        </SessionWrapper>
       </body>
     </html>
   );
